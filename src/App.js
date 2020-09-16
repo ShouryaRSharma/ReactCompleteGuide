@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import './App.scss';
 import Person from './Person/Person';
 
 
-const StyledButton = styled.button `
-  background-color: ${props => props.alt ? '#23272b' : '#23272b'};
-  transition: 0.2s;
-  color: ${props => props.alt ? '#fff' : '#ffd900'};
-  &:hover {
-    background-color: ${props => props.alt ? 'black' : '#ffd900'};
-    color: ${props => props.alt ? '#ffd900' : 'black'};
-    border: 1px solid ${props => props.alt ? '#ffd900' : 'black'};
-    box-shadow: 0px 2px 3px grey;
-  }
+// const StyledButton = styled.button `
+//   background-color: ${props => props.alt ? '#23272b' : '#23272b'};
+//   transition: 0.2s;
+//   color: ${props => props.alt ? '#fff' : '#ffd900'};
+//   &:hover {
+//     background-color: ${props => props.alt ? 'black' : '#ffd900'};
+//     color: ${props => props.alt ? '#ffd900' : 'black'};
+//     border: 1px solid ${props => props.alt ? '#ffd900' : 'black'};
+//     box-shadow: 0px 2px 3px grey;
+//   }
 
-`;
+// `;
 
 class App extends Component {
   state = {
@@ -104,7 +104,7 @@ class App extends Component {
       <div className="App">
           <h1>REACT APP</h1>
           <p className={classes.join(' ')}>This is really working!</p>
-          <StyledButton alt={this.state.showPersons} className="btn btn-dark" onClick={this.togglePersonsHandler}>Show Name</StyledButton>
+          <button /* alt={this.state.showPersons} */ className="btn btn-dark" onClick={this.togglePersonsHandler}>Show Name</button>
           {persons}          
       </div>
     );
