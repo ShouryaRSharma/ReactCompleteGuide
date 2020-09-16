@@ -1,0 +1,12 @@
+
+
+.Person {
+    border: 1px solid #eee;
+    box-shadow: 2px 2px 3px grey;
+    max-width: 25%;
+    padding: 1em;
+        .btn-danger {
+            margin-top: 1em;
+        }
+    justify-content: space-evenly;
+}
