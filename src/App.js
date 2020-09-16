@@ -51,14 +51,12 @@ class App extends Component {
   }
 
   render() {
-    // const style = {
-    //   backgroundColor: 'white',
-    //   font: 'inherit',
-    //   border: '1px solid blue',
-    //   borderRadius: '2px',
-    //   padding: '8px',
-    //   cursor: 'pointer'
-    // };
+    const style = {
+      backgroundColor: '#23272b',
+      font: 'inherit',
+    };
+
+    const classes = [];
 
     let persons = null;
 
@@ -68,22 +66,36 @@ class App extends Component {
           {/* maps array of JS elements. MAKE SURE TO ALWAYS ADD A KEY*/}
           {this.state.persons.map((person, index) => {
             return <Person 
+            
             change={(event) => this.nameChangeHandler(event, person.id)} 
             click={() => this.deletePersonHandler(index)} 
             name={person.name} 
             age={person.age} 
             key={person.id}/>
           })}
-          {/* <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} change={this.nameChangeHandler} click={this.switchNameHandler.bind(this, 'MAXIMO')}>My Hobbies: Racing</Person> */}
         </div> 
+        
       );
+
+      style.backgroundColor = 'white';
+      style.color = 'black';
+      
+      
+    }
+
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+
+    if (this.state.persons.length <=1 ) {
+      classes.push('underline');
     }
 
     return (
       <div className="App">
           <h1>REACT APP</h1>
-          <button className="btn btn-dark" onClick={this.togglePersonsHandler}>Show Name</button>
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button style={style}className="btn btn-dark" onClick={this.togglePersonsHandler}>Show Name</button>
           {persons}          
       </div>
     );
