@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Person.scss';
 
 const person = (props) => {
