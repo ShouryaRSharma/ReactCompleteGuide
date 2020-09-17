@@ -29,7 +29,7 @@ const Cockpit = (props) => {
 
     return(
         <div>
-            <h1>REACT APP</h1>
+            <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working!</p>
             <StyledButton big={props.alt} className="btn btn-dark" onClick={props.styleClick}>Show Name</StyledButton>
         </div>
