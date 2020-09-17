@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button `
@@ -13,6 +13,16 @@ const StyledButton = styled.button `
   }`;
 
 const Cockpit = (props) => {
+
+    // Combines componentDidMount and componentDidUpdate
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        // HTTP request...
+        setTimeout(() => {
+            alert('Saved data to cloud!');
+        }, 1000);
+    }, []);
+
     const classes = [];
 
     if (props.persons.length <= 2) {
