@@ -35,7 +35,7 @@ class Persons extends Component {
         console.log('[Persons.js] rendering...');
         return(
             this.props.persons.map((person, index) => {
-                return <ErrorBoundary><Person 
+                return <ErrorBoundary key={person.id}><Person 
                 change={(event) => this.props.changed(event, person.id)} 
                 click={() => this.props.clicked(index)} 
                 name={person.name} 

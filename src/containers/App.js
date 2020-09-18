@@ -105,7 +105,7 @@ class App extends Component {
       <div className="App">
         <button className="btn btn-dark mt-3" onClick={this.toggleCockpitHandler}>Toggle Cockpit</button>
         {this.state.showCockpit ? 
-        <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} persons={this.state.persons}/> 
+        <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length}/> 
         : null}
         {persons}          
       </div>
