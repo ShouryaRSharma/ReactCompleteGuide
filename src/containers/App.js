@@ -21,7 +21,7 @@ class App extends Component {
       { id: 3, name: 'Henry', age: 26 },
     ],
     showPersons: false,
-    showCockpit: false
+    showCockpit: true
   }
 
   static getDerivedStateFromProps(props, state) {
