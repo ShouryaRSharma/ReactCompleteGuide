@@ -21,3 +21,14 @@ $font1: 'Montserrat', sans-serif;
   font-size: 3rem;
 }
 
+.title {
+  border: 1px solid #eee;
+  box-shadow: 2px 2px 3px grey;
+  max-width: max-content;
+  padding: 1em;
+      .btn-danger {
+          margin-top: 1em;
+          box-shadow: 0px 3px 2px #a0a0a0;
+      }
+  justify-content: space-evenly;
+}

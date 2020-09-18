@@ -6,7 +6,24 @@ import React, { Component } from 'react';
 import './App.scss';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
+import styled from 'styled-components';
 
+const ToggleButton = styled.button `
+  background-color: ${props => props.alt ? '#dc3545' : ''};
+  border: ${props => props.alt ? '#dc3545' : '#1e7e34'};
+  transition: 0.2s;
+  &:hover {
+    background-color: ${props => props.alt ? '#dc3545' : '#218838'};
+    border: ${props => props.alt ? '#dc3545' : '#1e7e34'};
+    box-shadow: 0px 2px 3px grey;
+  }
+  &:focus {
+    background-color: ${props => props.alt ? '#dc3545' : '#218838'};
+    border: ${props => props.alt ? '#dc3545' : '#1e7e34'};
+    box-shadow: 0px 2px 3px grey;
+  }
+  `;
 // Class based component
 class App extends Component {
   constructor(props) {
@@ -102,13 +119,15 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <button className="btn btn-dark mt-3" onClick={this.toggleCockpitHandler}>Toggle Cockpit</button>
+      <WithClass classes="App">
+        <div className="container title mt-3">
+        <ToggleButton className="btn btn-success" alt={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
         {this.state.showCockpit ? 
         <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length}/> 
         : null}
+        </div>
         {persons}          
-      </div>
+      </WithClass>
     );
   }
 }
