@@ -1,21 +1,19 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person/Person';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-class Persons extends Component {
-    // static getDerivedStateFromProps(props, state) {
-    //     console.log('[Persons.js] getDerivedStateFromProps');
-    //     return state;
-    // }
+class Persons extends PureComponent {
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
+    // // Should consider how essential this is. Can negatively impact speed if the code block is executing for a large amount of components that would always be updating.
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate');
+    //     if (nextProps.persons !== this.props.persons) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
