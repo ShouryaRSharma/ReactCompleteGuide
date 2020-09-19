@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 // import Aux from '../../../hoc/Auxiliary';
-import './Person.scss';
+import classes from './Person.scss';
+import withClass from '../../../hoc/withClass';
+import Aux from '../../../hoc/Auxiliary';
 
 class Person extends Component {
     render() {
@@ -22,13 +24,15 @@ class Person extends Component {
             //     <button className="btn btn-danger" onClick={this.props.click}>Close</button>
             // </Aux>
 
-            <div className=" mt-3 container Person">
-                <p >I'm {this.props.name} and I am {this.props.age} years old! <br /> {this.props.children}</p>
-                <input className="form-control" onChange={this.props.change} value={this.props.name} type="text"></input>
-                <button className="btn btn-danger" onClick={this.props.click}>Close</button>
-            </div>
+            <Aux>
+                <div className=" mt-3 container Person">
+                    <p >I'm {this.props.name} and I am {this.props.age} years old! <br /> {this.props.children}</p>
+                    <input className="form-control" onChange={this.props.change} value={this.props.name} type="text"></input>
+                    <button className="btn btn-danger" onClick={this.props.click}>Close</button>
+                </div>
+            </Aux>
         )   
     }
 }
 
-export default Person;
+export default withClass(Person, classes.Person);
