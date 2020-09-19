@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // import classes from './app.module.css'; 
 // Note: This requires the css file to be renamed to .module.css as well.
 import classes from './App.module.scss';
+import './app-files.scss';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
