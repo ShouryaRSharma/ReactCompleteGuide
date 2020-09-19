@@ -121,7 +121,7 @@ class App extends Component {
 
     return (
       <Aux>
-        <div className="container title mt-3">
+        <div className="container Person mt-3">
         <ToggleButton className="btn btn-success" alt={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
         {this.state.showCockpit ? 
         <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length}/> 

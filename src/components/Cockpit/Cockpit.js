@@ -10,7 +10,14 @@ const StyledButton = styled.button `
     color: ${props => props.big ? '#ffd900' : 'black'};
     border: 1px solid ${props => props.big ? '#ffd900' : 'black'};
     box-shadow: 0px 2px 3px grey;
-  }`;
+  }
+  &:focus {
+    background-color: ${props => props.big ? 'black' : '#ffd900'};
+    color: ${props => props.big ? '#ffd900' : 'black'};
+    border: 1px solid ${props => props.big ? '#ffd900' : 'black'};
+    box-shadow: 0px 2px 3px grey;
+  }
+  `;
 
 const Cockpit = (props) => {
 
