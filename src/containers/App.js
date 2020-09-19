@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 // Modular CSS is already included in react-scripts 2.x and higher. In order to use these scripts, import the following way:
 // import classes from './app.module.css'; 
 // Note: This requires the css file to be renamed to .module.css as well.
-import './App.scss';
+import classes from './App.module.scss';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Auxiliary';
 import styled from 'styled-components';
 
 const ToggleButton = styled.button `
@@ -119,7 +120,7 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes="App">
+      <Aux>
         <div className="container title mt-3">
         <ToggleButton className="btn btn-success" alt={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
         {this.state.showCockpit ? 
@@ -127,9 +128,9 @@ class App extends Component {
         : null}
         </div>
         {persons}          
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
