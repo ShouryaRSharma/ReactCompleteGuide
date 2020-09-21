@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import classes from './Person.scss';
 import withClass from '../../../hoc/withClass';
 import Aux from '../../../hoc/Auxiliary';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
     constructor(props) {
@@ -35,8 +36,11 @@ class Person extends Component {
             // </Aux>
 
             <Aux>
+                
                 <div className=" mt-3 container Person">
-                    {this.props.isAuth ? <p>Authenticated</p> : <p>Please log in.</p>}
+                    <AuthContext.Consumer>
+                        {context => context.authenticated ? <p>Authenticated</p> : <p>Please Log In</p>}
+                    </AuthContext.Consumer>
                     <p >I'm {this.props.name} and I am {this.props.age} years old! <br /> {this.props.children}</p>
                     <input ref={this.inputElement} className="form-control" onChange={this.props.change} value={this.props.name} type="text"></input>
                     <button className="btn btn-danger" onClick={this.props.click}>Close</button>

@@ -10,6 +10,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Auxiliary';
 import styled from 'styled-components';
+import AuthContext from '../context/auth-context';
 
 const ToggleButton = styled.button `
   background-color: ${props => props.toggle ? '#dc3545' : ''};
@@ -136,13 +137,20 @@ class App extends Component {
 
     return (
       <Aux>
+        <AuthContext.Provider 
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.toggleLoginHandler            
+          }}>
         <div className="container Person mt-3">
         <ToggleButton className="btn btn-success" toggle={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
-        {this.state.showCockpit ? 
-        <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length} login={this.toggleLoginHandler}/> 
-        : null}
-        </div>
-        {persons}          
+            {this.state.showCockpit ? 
+            <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length}/> 
+            : null}
+            </div>
+            {persons}
+          </AuthContext.Provider>
+                  
       </Aux>
     );
   }

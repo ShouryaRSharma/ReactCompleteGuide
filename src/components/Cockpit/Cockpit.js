@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import AuthContext from '../../context/auth-context';
 
 const StyledButton = styled.button `
   background-color: ${props => props.big ? '#23272b' : '#23272b'};
@@ -66,7 +67,12 @@ const Cockpit = (props) => {
             <p className={classes.join(' ')}>This is really working!</p>
             <div className="btn-group">
             <StyledButton ref={toggleBtnRef} big={props.alt} className="btn btn-dark" onClick={props.styleClick}>Show Name</StyledButton>
-            <StyledButton className="btn btn-dark" onClick={props.login}>Log in</StyledButton>
+            <AuthContext.Consumer>
+                { (context) => 
+                    <StyledButton className="btn btn-dark" onClick={context.login}>Log in</StyledButton>
+                    
+                }
+            </AuthContext.Consumer>
             </div>
         </div>
     )

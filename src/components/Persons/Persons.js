@@ -32,6 +32,7 @@ class Persons extends PureComponent {
     render() {
         console.log('[Persons.js] rendering...');
         return(
+            
             this.props.persons.map((person, index) => {
                 return <ErrorBoundary key={person.id}><Person 
                 change={(event) => this.props.changed(event, person.id)} 
@@ -39,7 +40,7 @@ class Persons extends PureComponent {
                 name={person.name} 
                 age={person.age} 
                 key={person.id}
-                isAuth={this.props.isAuthenticated}/></ErrorBoundary>
+                /></ErrorBoundary>
             })
         )
     }
