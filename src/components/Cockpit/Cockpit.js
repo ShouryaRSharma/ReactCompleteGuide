@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import AuthContext from '../../context/auth-context';
 
@@ -22,6 +22,10 @@ const StyledButton = styled.button `
 
 const Cockpit = (props) => {
     const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
+
+    console.log(authContext);
+
     useEffect(() => {
         toggleBtnRef.current.click();
     }, []);
@@ -67,12 +71,7 @@ const Cockpit = (props) => {
             <p className={classes.join(' ')}>This is really working!</p>
             <div className="btn-group">
             <StyledButton ref={toggleBtnRef} big={props.alt} className="btn btn-dark" onClick={props.styleClick}>Show Name</StyledButton>
-            <AuthContext.Consumer>
-                { (context) => 
-                    <StyledButton className="btn btn-dark" onClick={context.login}>Log in</StyledButton>
-                    
-                }
-            </AuthContext.Consumer>
+            <StyledButton className="btn btn-dark" onClick={authContext.login}>Log in</StyledButton>
             </div>
         </div>
     )
