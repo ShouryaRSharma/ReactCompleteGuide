@@ -42,7 +42,8 @@ class App extends Component {
     ],
     showPersons: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -111,6 +112,12 @@ class App extends Component {
     });
   }
 
+  toggleLoginHandler = () => {
+    this.setState({
+      authenticated: true,
+    })
+  }
+
   render() {
     console.log('[App.js] render');
     let persons = null;
@@ -121,7 +128,8 @@ class App extends Component {
             <Persons 
             persons={this.state.persons} 
             clicked={this.deletePersonHandler} 
-            changed={this.nameChangeHandler} />
+            changed={this.nameChangeHandler} 
+            isAuthenticated={this.state.authenticated}/>
         </div> 
       );
     }
@@ -131,7 +139,7 @@ class App extends Component {
         <div className="container Person mt-3">
         <ToggleButton className="btn btn-success" toggle={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
         {this.state.showCockpit ? 
-        <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length}/> 
+        <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length} login={this.toggleLoginHandler}/> 
         : null}
         </div>
         {persons}          

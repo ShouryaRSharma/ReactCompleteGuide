@@ -64,9 +64,12 @@ const Cockpit = (props) => {
         <div>
             <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working!</p>
+            <div className="btn-group">
             <StyledButton ref={toggleBtnRef} big={props.alt} className="btn btn-dark" onClick={props.styleClick}>Show Name</StyledButton>
+            <StyledButton className="btn btn-dark" onClick={props.login}>Log in</StyledButton>
+            </div>
         </div>
-        )
+    )
 }
 
 export default React.memo(Cockpit);
