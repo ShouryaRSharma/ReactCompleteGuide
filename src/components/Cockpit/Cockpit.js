@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button `
@@ -20,6 +20,10 @@ const StyledButton = styled.button `
   `;
 
 const Cockpit = (props) => {
+    const toggleBtnRef = useRef(null);
+    useEffect(() => {
+        toggleBtnRef.current.click();
+    }, []);
 
     // Combines componentDidMount and componentDidUpdate
     useEffect(() => {
@@ -60,7 +64,7 @@ const Cockpit = (props) => {
         <div>
             <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working!</p>
-            <StyledButton big={props.alt} className="btn btn-dark" onClick={props.styleClick}>Show Name</StyledButton>
+            <StyledButton ref={toggleBtnRef} big={props.alt} className="btn btn-dark" onClick={props.styleClick}>Show Name</StyledButton>
         </div>
         )
 }

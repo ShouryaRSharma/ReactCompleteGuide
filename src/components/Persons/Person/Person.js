@@ -7,6 +7,15 @@ import withClass from '../../../hoc/withClass';
 import Aux from '../../../hoc/Auxiliary';
 
 class Person extends Component {
+    constructor(props) {
+        super(props);
+        this.inputElement = React.createRef();
+    }
+
+    componentDidMount() {
+        this.inputElement.current.focus();
+    }
+
     render() {
         console.log('[Person.js] rendering...');
         return (
@@ -28,7 +37,7 @@ class Person extends Component {
             <Aux>
                 <div className=" mt-3 container Person">
                     <p >I'm {this.props.name} and I am {this.props.age} years old! <br /> {this.props.children}</p>
-                    <input className="form-control" onChange={this.props.change} value={this.props.name} type="text"></input>
+                    <input ref={this.inputElement} className="form-control" onChange={this.props.change} value={this.props.name} type="text"></input>
                     <button className="btn btn-danger" onClick={this.props.click}>Close</button>
                 </div>
             </Aux>
