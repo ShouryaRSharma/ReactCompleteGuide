@@ -12,20 +12,21 @@ import Aux from '../hoc/Auxiliary';
 import styled from 'styled-components';
 
 const ToggleButton = styled.button `
-  background-color: ${props => props.alt ? '#dc3545' : ''};
-  border: ${props => props.alt ? '#dc3545' : '#1e7e34'};
+  background-color: ${props => props.toggle ? '#dc3545' : ''};
+  border: ${props => props.toggle ? '#dc3545' : '#1e7e34'};
   transition: 0.2s;
   &:hover {
-    background-color: ${props => props.alt ? '#dc3545' : '#218838'};
-    border: ${props => props.alt ? '#dc3545' : '#1e7e34'};
+    background-color: ${props => props.toggle ? '#dc3545' : '#218838'};
+    border: ${props => props.toggle ? '#dc3545' : '#1e7e34'};
     box-shadow: 0px 2px 3px grey;
   }
   &:focus {
-    background-color: ${props => props.alt ? '#dc3545' : '#218838'};
-    border: ${props => props.alt ? '#dc3545' : '#1e7e34'};
+    background-color: ${props => props.toggle ? '#dc3545' : '#218838'};
+    border: ${props => props.toggle ? '#dc3545' : '#1e7e34'};
     box-shadow: 0px 2px 3px grey;
   }
   `;
+  
 // Class based component
 class App extends Component {
   constructor(props) {
@@ -40,7 +41,8 @@ class App extends Component {
       { id: 3, name: 'Henry', age: 26 },
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -76,9 +78,13 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState( 
-      {persons: persons}
-    )
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        // Best practice for state updates that depend on older state.
+        changeCounter: prevState.changeCounter + 1
+      }
+    })
   }
 
   deletePersonHandler = (index) => {
@@ -123,7 +129,7 @@ class App extends Component {
     return (
       <Aux>
         <div className="container Person mt-3">
-        <ToggleButton className="btn btn-success" alt={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
+        <ToggleButton className="btn btn-success" toggle={this.state.showCockpit} onClick={this.toggleCockpitHandler}>Toggle Cockpit</ToggleButton>
         {this.state.showCockpit ? 
         <Cockpit title={this.props.appTitle} styleClick={this.togglePersonsHandler} alt={this.state.showPersons} personsLength={this.state.persons.length}/> 
         : null}
